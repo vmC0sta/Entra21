@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/result.css">
+
+
+</head>
+
+<body>
+    <script src="./scripts/menu.js"></script>
+
+
+    <div class="content-div">
+        <form autocomplete="off" onsubmit="verificarAprovado(event)">
+            <h1>Você recebeu um aumento?</h1>
+
+            <div class="itens-form">
+                <input type="radio" ="salario-inp-form" id="gerente" name="cargo" value="gerente">
+                <label>Gerente</label>
+            </div>
+            <div class="itens-form">
+                <input type="radio" class="salario-inp-form" id="supervisor" name="cargo" value="supervisor">
+                <label>Supervisor</label>
+            </div>
+            <div class="itens-form">
+                <input type="radio" class="salario-inp-form" id="operador" name="cargo" value="operador">
+                <label>Operador</label>
+            </div>
+            <div class="itens-form">
+                <input type="radio" class="salario-inp-form" id="outro" name="cargo" value="outro">
+                <label>Outro</label>
+            </div>
+            <div class="itens-form">
+                <label>Digite o seu salário</label>
+                <input type="text" autofocus id="ip-salarioAtual" min="0">
+            </div>
+            
+            <input type="submit" onclick="verificarAumento(event)" value="Enviar">
+
+        </form>
+    </div>
+
+    <div class="body-modal" id="body-modal">
+        <div class="popup-modal" id="popup-modal">
+                <input type="button" id="btn-close" class="btn-close" onclick="closepopup()"  value="X">
+            <h1 class="text-modal" id="text-modal"></h1>
+        </div>
+    </div>
+
+    <script src="./scripts/aumentosalarial.js"></script>
+
+</body>
+
+</html>

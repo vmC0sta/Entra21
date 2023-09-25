@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Press+Start+2P&family=Roboto+Mono:wght@500&family=Rubik+Iso&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+body{
+    display: flexbox;
+}
+
+.content-div{
+  border: solid black;
+  border-radius: 50px;
+  display: flex;
+  align-items: center; /* Centralize o conteúdo verticalmente */
+  margin: 5% auto; 
+  max-width: 1000px;
+  padding: 40px;
+}
+
+main{
+    margin-right: 100px;
+    max-width: 500px;
+    padding: 10px;
+    text-align:start    ;
+}
+
+h1{
+    margin-bottom: 50px;
+}
+
+aside{
+    text-align: center;
+    padding: 20px;
+}
+
+.btn-link{
+    display: block;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto ;
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #421800;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    width: 200px;
+
+}
+
+.btn-link:hover{
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    cursor: pointer;
+}

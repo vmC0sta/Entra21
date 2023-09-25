@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/result.css">
+
+
+</head>
+
+<body>
+
+
+    <body>
+
+        <script src="./scripts/menu.js"></script>
+
+        <div class="content-div">
+            <form autocomplete="off" onsubmit="verificarIdade(event)">
+
+                <h1>Você é maior de idade?</h1>
+
+                <div class="itens-form">
+                    <label>Digite a idade</label>
+                    <input type="text" autofocus id="ip-idade" min=1>
+                </div>
+
+              <input type="submit" value="Enviar" onclick="verificarIdade(event)">
+
+            </form>
+        </div>
+
+        <div class="body-modal" id="body-modal">
+            <div class="popup-modal" id="popup-modal">
+                    <input type="submit" id="btn-close" class="btn-close" onclick="closepopup()"  value="X">
+                <h1 class="text-modal" id="text-modal"></h1>
+            </div>
+        </div>
+
+        <script src="./scripts/maioridade.js"></script>
+
+        <script src="./scripts/footer.js"></script>
+
+    </body>
+
+    </html>
