@@ -1,5 +1,19 @@
 var numeros = []
 
+function existeNumero(numero) {
+
+    for (let i = 0; i < numeros.length; i++) {
+        if (numero == numeros[i]) {
+            return true
+        }
+    }
+    return false
+}
+
+function ehNumero(numero) {
+    return !isNaN(parseFloat(numero)) && isFinite(numero);
+}
+
 function inserirNumero() {
 
     numero = document.getElementById('inputNumber').value
@@ -35,6 +49,19 @@ function inserirNumero() {
 
 }
 
+function arrayCrescente(array) {
+    array.sort(function(a, b) {
+        return a - b;
+    });
+}
+
+function arrayDecrescente(array){
+    array.sort(function(a, b) {
+        return b - a;
+    });
+}
+
+
 function exibirArray() {
 
     var numerosCopiados = numeros.slice();
@@ -67,7 +94,6 @@ function exibirArray() {
     document.getElementsByTagName('tbody')[0].innerHTML = linhas;
 }
 
-
 function limpar() {
 
     var input = document.getElementById('inputNumber')
@@ -79,29 +105,16 @@ function limpar() {
     input.style.border = '2px solid black'
 }
 
-function arrayCrescente(array) {
-    array.sort(function(a, b) {
-        return a - b;
-    });
-}
+function excluirNumero(){
 
-function arrayDecrescente(array){
-    array.sort(function(a, b) {
-        return b - a;
-    });
-}
-
-
-function existeNumero(numero) {
-
+     numero = document.getElementById('inputNumber').value
+        
     for (let i = 0; i < numeros.length; i++) {
         if (numero == numeros[i]) {
-            return true
+            numeros.splice(i,1)
         }
     }
-    return false
+
+    exibirArray()
 }
 
-function ehNumero(numero) {
-    return !isNaN(parseFloat(numero)) && isFinite(numero);
-}
