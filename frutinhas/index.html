@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div>
+            <div class="mb-3 mt-3">
+                <label for="fruta" class="form-label">Fruta:</label>
+                <input type="text" class="form-control" id="fruta" placeholder="Digite o nome de uma fruta" autofocus
+                    name="fruta">
+            </div>
+            <div class="alert alert-warning alert-dismissible">
+                <p class="my-0" id="p-alert">
+                </p>
+            </div>
+
+            <select class="form-select form-select-sm d-sm-inline mb-3">
+                <option selected>Como você gostaria de visualizar suas frutinhas?</option>
+                <option value="1">Parágrafo</option>
+                <option value="2">Lista</option>
+                <option value="3">Tabela</option>
+              </select>
+
+            <button type="button" onclick="adicionarFruta()" class="btn btn-primary">Enviar</button>
+
+
+    </div>
+
+    <div class="titulo-frutas mt-3">
+        <h2>Frutas</h2>
+    </div>
+       <div class="container mt-3"id="resultado">
+
+       </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
