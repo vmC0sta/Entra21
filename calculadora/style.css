@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to bottom right,  rgb(255, 178, 34), rgba(224, 49, 49, 0.877));
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.relogio{
+    background-color: black;
+    color: white;
+    width: 250px;
+    border-radius: 50px;
+}
+
+.calculadora{
+    background-color: rgb(230, 233, 233);
+    height: 500px;
+    max-width:320px;
+    border-radius: 10px;
+}
+
+.titulo-calculadora{
+    color: rgb(0, 0, 0);
+    margin-left: 10px ;
+
+    float: left;
+}
+
+button{
+    width: 70px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
+button:hover{
+    background-color: rgba(255, 255, 255, 0.719);
+}
+
+.btn-mudar-tema{
+    width: 200px;
+}
+
