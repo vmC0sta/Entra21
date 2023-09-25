@@ -24,8 +24,6 @@ function inserirNumero() {
         return
     }
 
-
-
     numeros.push(parseFloat(numero));
 
     p.innerHTML = '<strong>Número inserido com sucesso!</strong>'
@@ -33,31 +31,40 @@ function inserirNumero() {
     p.style.color = 'green'
     input.style.border = 'green solid 2px'
 
-
-
     document.getElementById('inputNumber').value = ''
 
 }
 
 function exibirArray() {
 
-    arrayCrescente(numeros)
-    let linhas = ''
+    var numerosCopiados = numeros.slice();
 
-    for (let i = 0; i < numeros.length; i++) {
+    var select = document.querySelector('select');
+    var option = parseInt(select.options[select.selectedIndex].value);
 
-        linhas += `
-                    <tr>
-                        <td>${numeros[i]}</td>
-                        <td>${i}</td>
-                    </tr>
-                `
-
+    switch (option) {
+        case 1:
+            arrayCrescente(numerosCopiados);
+            break;
+        case 2:
+            arrayDecrescente(numerosCopiados);
+            break;
+        default:
+            break;
     }
 
+    let linhas = '';
 
-    document.getElementsByTagName('tbody')[0].innerHTML = linhas
+    for (let i = 0; i < numerosCopiados.length; i++) {
+        linhas += `
+            <tr>
+                <td>${numerosCopiados[i]}</td>
+                <td>${i}</td>
+            </tr>
+        `;
+    }
 
+    document.getElementsByTagName('tbody')[0].innerHTML = linhas;
 }
 
 
@@ -77,6 +84,13 @@ function arrayCrescente(array) {
         return a - b;
     });
 }
+
+function arrayDecrescente(array){
+    array.sort(function(a, b) {
+        return b - a;
+    });
+}
+
 
 function existeNumero(numero) {
 
