@@ -1,0 +1,230 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-hollow');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@500&family=Rubik+Iso&display=swap');
+
+body {
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #2a0145;
+  color: aliceblue;
+  display: flexbox;
+  font-family: 'Roboto Mono', monospace;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+
+.logo {
+  margin-top: 10px;
+  max-width: 150px;
+}
+
+.navbar {
+  font-family: 'Pokemon Hollow', sans-serif;
+}
+
+.other-nav{
+  display: none;
+}
+
+.nav-items {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.topics {
+  text-decoration: none;
+  color: yellow;
+}
+
+.topics :hover {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(75, 1, 1);
+  border-radius: 15px;
+}
+
+section {
+  text-align: justify;
+  max-width: 800px;
+  margin-right: 20px;
+  float: left;
+  /* Adicione o float para alinhar à esquerda */
+}
+
+.icons {
+  max-width: 15px;
+  padding: 10px;
+  display: inline-block;
+  margin:auto;
+  margin-right: 10px;
+  border: 2px solid white;
+  border-radius: 40px;
+}
+
+.icons:hover{
+  background-color: aliceblue;
+
+}
+
+
+.p-welcome {
+  max-width: 120px;
+  padding: 5px;
+  color: rgb(212, 3, 3);
+  border-radius: 10px;
+}
+
+
+.first-div-gengar {
+  margin-top: 10%;
+}
+
+.first-img-gengar {
+  max-width: 330px;
+  display: block;
+  margin: auto;
+}
+
+
+aside {
+  max-width: 500px;
+  margin: auto;
+  margin-left: 0px;
+  margin-bottom: 25PX;
+  float: right;
+}
+
+@media screen and (max-width: 900px)   {
+
+  .navbar{
+    display: none;
+  }
+
+  .other-nav{ 
+    margin: 20px;
+    position: fixed;
+    top: 40px;
+    right: 5px;
+    display: inline-block;
+  }
+
+  .other-nav-items{
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .other-nav-content{
+    display: none;
+    position: absolute;
+    background-color: #7e00b9ee;
+    border-radius: 10px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+  }
+
+  .other-nav-content a {
+    color: rgb(255, 255, 255);
+    padding: 12px 1px;
+    text-decoration: none;
+    display: block;
+  }
+  
+
+  .other-nav:hover .other-nav-content {
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: 5px;
+  }
+
+  .nav-items {
+    font-size: x-small;
+    display: block;
+  }
+
+  .other-topics{
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 0;
+    font-size: x-small;
+  }
+
+  .other-topics:hover {
+    text-decoration: none;
+    color: rgb(237, 136, 250);
+    border-radius: 0px;
+  }
+
+  aside{
+      width:100%;   
+      float:none;
+      margin-left: 0px;
+  }
+
+
+}
+
+.second-div-gengar{
+  margin: auto;
+    margin-bottom: 5px;
+}
+
+.second-img-gengar{
+  max-width: 330px;
+  display: block;
+  margin: auto;
+}
+
+.aside-elements{
+  margin: auto;
+  display: table;
+  list-style-type: none;
+  max-width: auto;
+  padding: 50px;
+  border-radius: 30px ;
+  background-color: #6e07b315;
+  overflow: auto;
+}
+
+.aside-itens{
+  width: auto;
+  list-style-type: none;
+  margin: auto;
+  display:flex;
+  padding: 10px;
+}
+.aside-input{
+  width: 60%;
+  height: 25px;
+  border-radius: 40px;
+  padding-left: 15px;
+  margin-left: 40px;
+  background-color: #d89eff;
+  color: #1a002c;;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.btn{
+  text-align: center;
+}
+
+button{
+  padding: 10px;
+  margin-top: 10%;
+  width: auto;
+  height: 50px;
+  background-color: #a43af0;
+  border-radius: 100px;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+button:hover{
+  background-color: #ffffff;
+  color: #a43af0;
+}
