@@ -42,30 +42,34 @@ function inserirNumero() {
 function exibirArray() {
 
     arrayCrescente(numeros)
-
-    lista = document.createElement('ul')
-    lista.className = 'list-group text-start'
+    let linhas = ''
 
     for (let i = 0; i < numeros.length; i++) {
 
-        item = document.createElement('li')
+        linhas += `
+                    <tr>
+                        <td>${numeros[i]}</td>
+                        <td>${i}</td>
+                    </tr>
+                `
 
-        item.className = 'list-group-item mt-4'
-        item.textContent = numeros[i]
-
-        lista.appendChild(item)
     }
 
-    document.getElementById('arrays').innerHTML = '';
-    document.getElementById('arrays').appendChild(lista);
 
+    document.getElementsByTagName('tbody')[0].innerHTML = linhas
 
 }
 
+
 function limpar() {
 
+    var input = document.getElementById('inputNumber')
+    var p = document.getElementsByTagName('p')[0];
+
     numeros = []
-    document.getElementById('arrays').innerHTML = ''
+    document.getElementsByTagName('tbody')[0].innerHTML = ''
+    p.style.display = 'none'
+    input.style.border = '2px solid black'
 }
 
 function arrayCrescente(array) {
