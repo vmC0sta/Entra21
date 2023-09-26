@@ -1,5 +1,7 @@
 # Cat API Demo
 
+![image](https://github.com/vmC0sta/Entra21/assets/116650361/bba08d9c-4fe1-4f72-9c73-b4a941431720)
+
 Este é um projeto simples que utiliza a API pública "The Cat API" para buscar imagens aleatórias de gatos e exibi-las em uma página da web. O projeto é composto por um arquivo HTML, um arquivo CSS e um arquivo JavaScript.
 
 ## Pré-requisitos
