@@ -4,6 +4,8 @@ Uma calculadora simples construída com HTML, CSS e JavaScript.
 
 ## Visão Geral
 
+![image](https://github.com/vmC0sta/Entra21/assets/116650361/29186e11-6191-4183-8f14-624f7807e999)
+
 Este é um projeto de calculadora web que permite aos usuários realizar operações matemáticas básicas, como adição, subtração, multiplicação e divisão. A interface do usuário é amigável e fácil de usar.
 
 ## Funcionalidades
