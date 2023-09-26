@@ -51,6 +51,8 @@ function adicionarProduto() {
     // Verifica se os valores dos campos valorUnitario e quantidade são números
     if(isNaN(valorUnitario) || isNaN(quantidade)){
         alert('Informe um número válido')
+        document.getElementById('valor').value = ''
+        document.getElementById('quantidade').value = ''
         return
     }
     // Verifica se os valores já estavam presentes no Array
@@ -91,11 +93,12 @@ function atualizarCards() {
         linhas += `
             <div class="col m-2">
                 <div class="card" style="width: 18rem;height: 450px;">
-                    <img class="card-img-top" src="${produtos[i].imagem}" alt="Produto ${i + 1} style="width: 100%; height: 200px;"">
+                    <img class="card-img-top style="height=300px" " src="${produtos[i].imagem}" alt="Produto ${i + 1}">
                     <div class="card-body text-center">
                         <h5 class="card-title">${produtos[i].produto}</h5>
                         <p class="card-text m-0"><strong>Quantidade: ${produtos[i].quantidade}</strong></p>
                         <p class="card-text m-0"><strong>Valor unitário: R$${produtos[i].valorUnitario}</strong></p>
+                        <button type="button" class="btn btn-danger m-2" onclick=excluir('${i}')>Excluir</button>
                     </div>
                 </div>
             </div>
@@ -112,5 +115,12 @@ function limpar(){
     document.getElementById('valor').value = '';
     document.getElementById('quantidade').value='';
     document.getElementById('arquivo').value = '';
+
+}
+
+function excluir(item){
+
+    produtos.splice(item,1)
+    atualizarCards()
 
 }
