@@ -1,5 +1,7 @@
 # Lista de Contatos 📇
 
+![image](https://github.com/vmC0sta/Entra21/assets/116650361/8739507b-7cf8-449d-91dc-8e5db041b586)
+
 Bem-vindo ao projeto "Lista de Contatos"! Esta aplicação web foi desenvolvida para simplificar o gerenciamento de seus contatos pessoais. Organize, visualize e atualize suas informações de contato com facilidade. 📇🚀
 
 
