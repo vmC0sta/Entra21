@@ -100,6 +100,7 @@ function limpar() {
     var p = document.getElementsByTagName('p')[0];
 
     numeros = []
+    input.value = ''
     document.getElementsByTagName('tbody')[0].innerHTML = ''
     p.style.display = 'none'
     input.style.border = '2px solid black'
@@ -115,6 +116,41 @@ function excluirNumero(){
         }
     }
 
+    exibirArray()
+}
+
+function alterarNumero(){
+
+    numero = document.getElementById('inputNumber').value
+
+    var input = document.getElementById('inputNumber')
+    var p = document.getElementsByTagName('p')[0];
+
+    if(!existeNumero(numero)){
+        p.innerHTML = '<strong>O número não existe no array!</strong>'
+        p.style.display = 'flex'
+        p.style.color = 'rgb(255, 174, 0)'
+        input.style.border = 'rgb(255, 174, 0) solid 2px'
+        return
+    }
+
+    for (let i = 0; i < numeros.length; i++) {
+        if (numero == numeros[i]) {
+            numeros.splice(i,1)
+        }
+    }
+
+    p.innerHTML = '<strong>Informe o novo número</strong>'
+    p.style.display = 'flex'
+    p.style.color = 'rgb(51, 82, 253)'
+    input.style.border = 'rgb(51, 82, 253) solid 2px'
+
+    document.getElementById('inputNumber').value = ''
+
+}
+
+function salvarAlteracao(){
+    inserirNumero()
     exibirArray()
 }
 
