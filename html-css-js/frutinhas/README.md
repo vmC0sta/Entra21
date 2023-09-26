@@ -1,5 +1,7 @@
 # Frutinhas 🍓🍌🍎
 
+![image](https://github.com/vmC0sta/Entra21/assets/116650361/4c851e20-a201-440c-b4cd-8004c5782bc7)
+
 Bem-vindo ao repositório "Frutinhas"! Este projeto simples em JavaScript permite que você crie uma lista dinâmica de frutas em uma página da web. Você pode adicionar frutas à lista, e também removê-las individualmente.
 
 ## Funcionalidades
