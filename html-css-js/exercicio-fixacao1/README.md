@@ -1,8 +1,8 @@
-![image](https://github.com/vmC0sta/Entra21/assets/116650361/3b0946c9-2513-40ff-be9c-87ea681c78cf)# Gerenciador de Números
-
-Este é um simples aplicativo JavaScript que permite aos usuários inserir, modificar, excluir e classificar números em uma lista.
+# Gerenciador de Números
 
 ![image](https://github.com/vmC0sta/Entra21/assets/116650361/3b655b78-62fa-4b3f-8689-da0f05cc8726)
+
+Este é um simples aplicativo JavaScript que permite aos usuários inserir, modificar, excluir e classificar números em uma lista.
 
 ## Funcionalidades
 
