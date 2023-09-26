@@ -99,6 +99,7 @@ function atualizarCards() {
                         <p class="card-text m-0"><strong>Quantidade: ${produtos[i].quantidade}</strong></p>
                         <p class="card-text m-0"><strong>Valor unitário: R$${produtos[i].valorUnitario}</strong></p>
                         <button type="button" class="btn btn-danger m-2" onclick=excluir('${i}')>Excluir</button>
+                        <button type="button" class="btn btn-light m-2" id="editar" onclick=editar('${i}')>Editar</button>
                     </div>
                 </div>
             </div>
@@ -118,9 +119,20 @@ function limpar(){
 
 }
 
-function excluir(item){
+function editar(i){
 
-    produtos.splice(item,1)
+    document.getElementById('produto').value = produtos[i].produto
+    document.getElementById('valor').value = produtos[i].valorUnitario
+    document.getElementById('quantidade').value = produtos[i].quantidade
+    document.getElementById('arquivo').valueprodutos[i].imagem
+
+    document.getElementsById('btn-gravar').innerHTML = 'Editar'
+
+}
+
+function excluir(i){
+
+    produtos.splice(i,1)
     atualizarCards()
 
 }
