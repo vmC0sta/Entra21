@@ -61,7 +61,6 @@ function arrayDecrescente(array){
     });
 }
 
-
 function exibirArray() {
 
     var numerosCopiados = numeros.slice();
