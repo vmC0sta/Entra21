@@ -1,4 +1,7 @@
 ## Site Pessoal
+
+![Uploading image.png…]()
+
 Bem-vindo ao meu cantinho virtual! Este é o repositório do meu site pessoal, uma pequena obra de arte digital onde compartilho um pouco sobre quem sou e o que faço.
 
 ## 🌟 Recursos
