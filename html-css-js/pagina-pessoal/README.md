@@ -1,6 +1,6 @@
 ## Site Pessoal
 
-![Uploading image.png…]()
+![image](https://github.com/vmC0sta/Entra21/assets/116650361/658ed21e-b338-4352-8b62-f299ac538a5b)
 
 Bem-vindo ao meu cantinho virtual! Este é o repositório do meu site pessoal, uma pequena obra de arte digital onde compartilho um pouco sobre quem sou e o que faço.
 
