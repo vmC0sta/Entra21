@@ -1,3 +1,14 @@
+function inserir(num) {
+    var resultado = document.getElementById("resultado");
+    var numeroAtual = resultado.innerHTML;
+
+    if (numeroAtual === "0" && num !== ".") {
+        resultado.innerHTML = num;
+    } else {
+        resultado.innerHTML += num;
+    }
+}
+
 function limpar() {
     document.getElementById('resultado').innerHTML = 0
 }
