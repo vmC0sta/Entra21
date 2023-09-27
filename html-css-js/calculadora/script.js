@@ -1,27 +1,3 @@
-const getHours = () => {
-    const relogio = document.getElementById("clock");
-    const data = new Date();
-    const horas = data.getHours();
-    const minutos = data.getMinutes();
-    const segundos = data.getSeconds();
-    relogio.innerHTML = `${horas}:${minutos}:${segundos}`;
-}
-
-
-setInterval(getHours, 1000);
-
-function inserir(num) {
-    var resultado = document.getElementById("resultado");
-    var numeroAtual = resultado.innerHTML;
-
-    if (numeroAtual === "0" && num !== ".") {
-        resultado.innerHTML = num;
-    } else {
-        resultado.innerHTML += num;
-    }
-}
-
-
 function limpar() {
     document.getElementById('resultado').innerHTML = 0
 }
@@ -40,13 +16,6 @@ function apagar() {
     }
 }
 
-function umX() {
-
-    numero = document.getElementById('resultado').innerHTML
-    document.getElementById('resultado').innerHTML = "1 / " + numero
-
-}
-
 
 function calcular() {
 
@@ -56,6 +25,14 @@ function calcular() {
     }
 
 }
+
+function inversa() {
+
+    numero = document.getElementById('resultado').innerHTML
+    document.getElementById('resultado').innerHTML = "1 / " + numero
+
+}
+
 
 function aoQuadrado() {
 
