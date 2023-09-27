@@ -1,6 +1,6 @@
 var numeros = []
 
-function existeNumero(numero) {
+function ehDuplicado(numero) {
 
     for (let i = 0; i < numeros.length; i++) {
         if (numero == numeros[i]) {
@@ -10,18 +10,15 @@ function existeNumero(numero) {
     return false
 }
 
-function ehNumero(numero) {
-    return !isNaN(parseFloat(numero)) && isFinite(numero);
-}
 
 function inserirNumero() {
 
-    numero = document.getElementById('inputNumber').value
+    let numero = document.getElementById('inputNumber').value
 
     var input = document.getElementById('inputNumber')
     var p = document.getElementsByTagName('p')[0];
 
-    if (!ehNumero(numero)) {
+    if (isNaN(numero)) {
 
         p.innerHTML = '<strong>Digite um número válido!</strong>'
         p.style.display = 'flex'
@@ -30,7 +27,7 @@ function inserirNumero() {
         return
     }
 
-    if(existeNumero(numero)){
+    if(ehDuplicado(numero)){
         p.innerHTML = '<strong>O número já existe no array!</strong>'
         p.style.display = 'flex'
         p.style.color = 'rgb(255, 174, 0)'
@@ -125,7 +122,7 @@ function alterarNumero(){
     var input = document.getElementById('inputNumber')
     var p = document.getElementsByTagName('p')[0];
 
-    if(!existeNumero(numero)){
+    if(!ehDuplicado(numero)){
         p.innerHTML = '<strong>O número não existe no array!</strong>'
         p.style.display = 'flex'
         p.style.color = 'rgb(255, 174, 0)'
