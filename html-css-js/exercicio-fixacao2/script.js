@@ -116,7 +116,7 @@ function atualizarCards() {
     document.getElementsByClassName('row')[0].innerHTML = linhas;
     limpar();
 
-    document.getElementById('valorTotal').innerHTML= 'Valor unitário: R$' + soma;
+    document.getElementById('valorTotal').innerHTML= 'Valor total: R$' + soma;
 }
 
 
