@@ -1,4 +1,5 @@
-var produtos = [];
+let produtos = [];
+let produtoEditar = [];
 
 function ehDuplicado(a, b) {  // Verifica se o produto já está presente no array
 
@@ -28,7 +29,7 @@ function carregarArquivo(file, callback) {  // Carrega o arquivo
         // Inicia a leitura do arquivo. Isso faz com que o navegador comece a ler o conteúdo do arquivo especificado.
         reader.readAsDataURL(file);
     }
-    else{
+    else {
         //Se 'file' estiver vazio, exibe um alerta para informar ao usuário que uma foto do produto deve ser fornecida.
         alert('Informe uma foto do produto!')
     }
@@ -38,18 +39,18 @@ function adicionarProduto() {
 
 
     // Atribui os valores dos inputs a variáveis
-    var produto = document.getElementById('produto').value;
-    var valorUnitario = parseFloat(document.getElementById('valor').value);
-    var quantidade = parseFloat(document.getElementById('quantidade').value);
-    var arquivoInput = document.getElementById('arquivo');
+    let produto = document.getElementById('produto').value;
+    let valorUnitario = parseFloat(document.getElementById('valor').value);
+    let quantidade = parseFloat(document.getElementById('quantidade').value);
+    let arquivoInput = document.getElementById('arquivo');
 
     // Verifica se os campos foram preenchidos
-    if (produto === '' || valorUnitario === '' || quantidade ==='') {
+    if (produto === '' || valorUnitario === '' || quantidade === '') {
         alert('O campo não foi preenchido!');
         return;
     }
     // Verifica se os valores dos campos valorUnitario e quantidade são números
-    if(isNaN(valorUnitario) || isNaN(quantidade)){
+    if (isNaN(valorUnitario) || isNaN(quantidade)) {
         alert('Informe um número válido')
         document.getElementById('valor').value = ''
         document.getElementById('quantidade').value = ''
@@ -66,13 +67,13 @@ function adicionarProduto() {
 
         // Cria um novo produto com informações fornecidas pelo usuário.
 
-        var novoProduto = {
+        let novoProduto = {
             produto: produto,
             valorUnitario: valorUnitario,
             quantidade: quantidade,
             imagem: imagemURL
         };
-        
+
         // Adiciona o novoProduto ao array
         produtos.push(novoProduto);
         console.log(produtos);
@@ -93,7 +94,7 @@ function atualizarCards() {
         linhas += `
             <div class="col m-2">
                 <div class="card" style="width: 18rem;height: 450px;">
-                    <img class="card-img-top style="height=300px" " src="${produtos[i].imagem}" alt="Produto ${produtos.produto}">
+                    <img id="imagem-produto" class="card-img-top style="height=300px src="${produtos[i].imagem}" alt="Produto ${produtos.produto}">
                     <div class="card-body text-center">
                         <h5 class="card-title">${produtos[i].produto}</h5>
                         <p class="card-text m-0"><strong>Quantidade: ${produtos[i].quantidade}</strong></p>
@@ -111,28 +112,52 @@ function atualizarCards() {
 }
 
 // Limpa os campos
-function limpar(){
+function limpar() {
     document.getElementById('produto').value = '';
     document.getElementById('valor').value = '';
-    document.getElementById('quantidade').value='';
+    document.getElementById('quantidade').value = '';
     document.getElementById('arquivo').value = '';
 
 }
 
-function editar(i){
+function editar(i) {
 
-    document.getElementById('produto').value = produtos[i].produto
-    document.getElementById('valor').value = produtos[i].valorUnitario
-    document.getElementById('quantidade').value = produtos[i].quantidade
-    document.getElementById('arquivo').valueprodutos[i].imagem
-
-    document.getElementsById('btn-gravar').innerHTML = 'Editar'
+    produtoEditar = produtos[i];
+    document.getElementById('produto').value = produtoEditar.produto;
+    document.getElementById('valor').value = produtoEditar.valorUnitario;
+    document.getElementById('quantidade').value = produtoEditar.quantidade;
 
 }
 
-function excluir(i){
 
-    produtos.splice(i,1)
+function salvar () {
+
+    let produtoAlterado = document.getElementById('produto').value;
+    let valorAlterado = parseFloat(document.getElementById('valor').value);
+    let quantidadeAlterado = parseFloat(document.getElementById('quantidade').value);
+    let novoArquivo = document.getElementById('arquivo').files[0]; // Nova imagem
+
+    produtoEditar.produto = produtoAlterado;
+    produtoEditar.valorUnitario = valorAlterado;
+    produtoEditar.quantidade = quantidadeAlterado;
+
+    // Atualiza a imagem apenas se um novo arquivo foi fornecido
+    if (novoArquivo) {
+        carregarArquivo(novoArquivo, function (imagemURL) {
+            produtoEditar.imagem = imagemURL;
+            atualizarCards();
+            limpar();
+        });
+    } else {
+        atualizarCards();
+        limpar();
+    }
+}
+
+
+function excluir(i) {
+
+    produtos.splice(i, 1)
     atualizarCards()
 
 }
