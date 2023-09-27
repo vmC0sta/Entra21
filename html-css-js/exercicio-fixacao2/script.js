@@ -1,5 +1,6 @@
 let produtos = [];
 let produtoEditar = [];
+let soma = 0
 
 function ehDuplicado(a, b) {  // Verifica se o produto já está presente no array
 
@@ -84,10 +85,11 @@ function adicionarProduto() {
 }
 
 function atualizarCards() {
-
-
     // Garante que a linha esteja vazia
     let linhas = '';
+
+    // Inicializa a variável soma com zero
+    let soma = 0;
 
     // Monta uma estrutura HTML com as informações fornecidas pelo usuário
     for (let i = 0; i < produtos.length; i++) {
@@ -105,11 +107,18 @@ function atualizarCards() {
                 </div>
             </div>
         `;
+
+        // Converte o valor unitário para número e adiciona à soma
+        soma += parseFloat(produtos[i].valorUnitario) * parseFloat(produtos[i].quantidade);
     }
+
     // Adiciona essa estrutura ao elemento row do HTML
     document.getElementsByClassName('row')[0].innerHTML = linhas;
-    limpar()
+    limpar();
+
+    document.getElementById('valorTotal').innerHTML= 'Valor unitário: R$' + soma;
 }
+
 
 // Limpa os campos
 function limpar() {
