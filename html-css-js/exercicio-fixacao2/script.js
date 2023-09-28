@@ -41,8 +41,8 @@ function adicionarProduto() {
 
     // Atribui os valores dos inputs a variáveis
     let produto = document.getElementById('produto').value;
-    let valorUnitario = parseFloat(document.getElementById('valor').value);
-    let quantidade = parseFloat(document.getElementById('quantidade').value);
+    let valorUnitario = parseFloat(document.getElementById('valor').value.replace(',','.'));
+    let quantidade = parseFloat(document.getElementById('quantidade').value.replace(',','.'));
     let arquivoInput = document.getElementById('arquivo');
 
     // Verifica se os campos foram preenchidos
@@ -96,7 +96,7 @@ function atualizarCards() {
         linhas += `
             <div class="col m-2">
                 <div class="card" style="width: 18rem;height: 450px;">
-                    <img id="imagem-produto" class="card-img-top style="height=300px src="${produtos[i].imagem}" alt="Produto ${produtos.produto}">
+                    <img id="imagem-produto" class="card-img-top style="height=300px src="${produtos[i].imagem}" alt="Produto ${i+1}}">
                     <div class="card-body text-center">
                         <h5 class="card-title">${produtos[i].produto}</h5>
                         <p class="card-text m-0"><strong>Quantidade: ${produtos[i].quantidade}</strong></p>
@@ -116,7 +116,7 @@ function atualizarCards() {
     document.getElementsByClassName('row')[0].innerHTML = linhas;
     limpar();
 
-    document.getElementById('valorTotal').innerHTML= 'Valor unitário: R$' + soma;
+    document.getElementById('valorTotal').innerHTML= 'Valor total: R$' + soma.toFixed(2);
 }
 
 
@@ -128,9 +128,10 @@ function limpar() {
     document.getElementById('arquivo').value = '';
 
 }
-
+//Edita o produto
 function editar(i) {
 
+    //Atribui o produto a ser editado na variável produtoEditar
     produtoEditar = produtos[i];
     document.getElementById('produto').value = produtoEditar.produto;
     document.getElementById('valor').value = produtoEditar.valorUnitario;
@@ -138,14 +139,16 @@ function editar(i) {
 
 }
 
-
+// Salva as alterações
 function salvar () {
 
+    // Atribui o valor do input, a variavel xxxAlterado
     let produtoAlterado = document.getElementById('produto').value;
-    let valorAlterado = parseFloat(document.getElementById('valor').value);
-    let quantidadeAlterado = parseFloat(document.getElementById('quantidade').value);
+    let valorAlterado = parseFloat(document.getElementById('valor').value.replace(',','.'));
+    let quantidadeAlterado = parseFloat(document.getElementById('quantidade').value.replace(',','.'));
     let novoArquivo = document.getElementById('arquivo').files[0]; // Nova imagem
 
+    // produtoEditar (que recebeu o produto a ser editado) recebe o xxxAlterado
     produtoEditar.produto = produtoAlterado;
     produtoEditar.valorUnitario = valorAlterado;
     produtoEditar.quantidade = quantidadeAlterado;
@@ -163,9 +166,10 @@ function salvar () {
     }
 }
 
-
+// Exclui
 function excluir(i) {
 
+    // Utiliza o index recebido ao clicar no evento
     produtos.splice(i, 1)
     atualizarCards()
 

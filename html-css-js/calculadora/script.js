@@ -9,11 +9,12 @@ function inserir(num) {
     }
 }
 
-function limpar() {
+
+function apagar() {
     document.getElementById('resultado').innerHTML = 0
 }
 
-function apagar() {
+function limpar() {
 
     var resultado = document.getElementById('resultado');
     var numero = resultado.innerHTML;
@@ -26,7 +27,6 @@ function apagar() {
         resultado.innerHTML = 0
     }
 }
-
 
 function calcular() {
 
