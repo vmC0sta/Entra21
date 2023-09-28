@@ -128,9 +128,10 @@ function limpar() {
     document.getElementById('arquivo').value = '';
 
 }
-
+//Edita o produto
 function editar(i) {
 
+    //Atribui o produto a ser editado na variável produtoEditar
     produtoEditar = produtos[i];
     document.getElementById('produto').value = produtoEditar.produto;
     document.getElementById('valor').value = produtoEditar.valorUnitario;
@@ -138,14 +139,16 @@ function editar(i) {
 
 }
 
-
+// Salva as alterações
 function salvar () {
 
+    // Atribui o valor do input, a variavel xxxAlterado
     let produtoAlterado = document.getElementById('produto').value;
     let valorAlterado = parseFloat(document.getElementById('valor').value.replace(',','.'));
     let quantidadeAlterado = parseFloat(document.getElementById('quantidade').value.replace(',','.'));
     let novoArquivo = document.getElementById('arquivo').files[0]; // Nova imagem
 
+    // produtoEditar (que recebeu o produto a ser editado) recebe o xxxAlterado
     produtoEditar.produto = produtoAlterado;
     produtoEditar.valorUnitario = valorAlterado;
     produtoEditar.quantidade = quantidadeAlterado;
@@ -163,9 +166,10 @@ function salvar () {
     }
 }
 
-
+// Exclui
 function excluir(i) {
 
+    // Utiliza o index recebido ao clicar no evento
     produtos.splice(i, 1)
     atualizarCards()
 
