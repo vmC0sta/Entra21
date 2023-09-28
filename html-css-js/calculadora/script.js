@@ -1,15 +1,3 @@
-const getHours = () => {
-    const relogio = document.getElementById("clock");
-    const data = new Date();
-    const horas = data.getHours();
-    const minutos = data.getMinutes();
-    const segundos = data.getSeconds();
-    relogio.innerHTML = `${horas}:${minutos}:${segundos}`;
-}
-
-
-setInterval(getHours, 1000);
-
 function inserir(num) {
     var resultado = document.getElementById("resultado");
     var numeroAtual = resultado.innerHTML;
@@ -22,11 +10,11 @@ function inserir(num) {
 }
 
 
-function limpar() {
+function apagar() {
     document.getElementById('resultado').innerHTML = 0
 }
 
-function apagar() {
+function limpar() {
 
     var resultado = document.getElementById('resultado');
     var numero = resultado.innerHTML;
@@ -40,7 +28,7 @@ function apagar() {
     }
 }
 
-function umX() {
+function inversa() {
 
     numero = document.getElementById('resultado').innerHTML
     document.getElementById('resultado').innerHTML = "1 / " + numero
