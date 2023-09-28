@@ -41,8 +41,8 @@ function adicionarProduto() {
 
     // Atribui os valores dos inputs a variáveis
     let produto = document.getElementById('produto').value;
-    let valorUnitario = parseFloat(document.getElementById('valor').value);
-    let quantidade = parseFloat(document.getElementById('quantidade').value);
+    let valorUnitario = parseFloat(document.getElementById('valor').value.replace(',','.'));
+    let quantidade = parseFloat(document.getElementById('quantidade').value.replace(',','.'));
     let arquivoInput = document.getElementById('arquivo');
 
     // Verifica se os campos foram preenchidos
@@ -116,7 +116,7 @@ function atualizarCards() {
     document.getElementsByClassName('row')[0].innerHTML = linhas;
     limpar();
 
-    document.getElementById('valorTotal').innerHTML= 'Valor total: R$' + soma;
+    document.getElementById('valorTotal').innerHTML= 'Valor total: R$' + soma.toFixed(2);
 }
 
 
@@ -142,8 +142,8 @@ function editar(i) {
 function salvar () {
 
     let produtoAlterado = document.getElementById('produto').value;
-    let valorAlterado = parseFloat(document.getElementById('valor').value);
-    let quantidadeAlterado = parseFloat(document.getElementById('quantidade').value);
+    let valorAlterado = parseFloat(document.getElementById('valor').value.replace(',','.'));
+    let quantidadeAlterado = parseFloat(document.getElementById('quantidade').value.replace(',','.'));
     let novoArquivo = document.getElementById('arquivo').files[0]; // Nova imagem
 
     produtoEditar.produto = produtoAlterado;
