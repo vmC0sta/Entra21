@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="">Endereço</span>
+            <input type="text" id="rua" class="form-control" placeholder="Rua" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+        <div class="container mt-3">
+            <button class="btn btn-primary" onclick="preencherEndereco()">Buscar</button>
+        </div>
+    </div>
+
+    <script>
+
+        async function preencherEndereco(){
+
+            let cep = '8916332'
+
+        try{
+            let dados = await fetch (`https://viacep.com.br/ws/${cep}/json/`)
+            let response = await dados.json()
+
+            if(response.logradouro == 'vazio'){
+                throw 'Informe o logradouro'
+            }
+
+            document.getElementById('rua').value = response.logradouro
+
+        }
+        catch(err){
+            console.log(console.log(err))
+        }}
+
+    </script>
+</body>
+
+</html>
