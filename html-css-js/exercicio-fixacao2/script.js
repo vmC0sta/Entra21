@@ -96,7 +96,7 @@ function atualizarCards() {
         linhas += `
             <div class="col m-2">
                 <div class="card" style="width: 18rem;height: 450px;">
-                    <img id="imagem-produto" class="card-img-top style="height=300px src="${produtos[i].imagem}" alt="Produto ${produtos.produto}">
+                    <img id="imagem-produto" class="card-img-top style="height=300px src="${produtos[i].imagem}" alt="Produto ${i+1}}">
                     <div class="card-body text-center">
                         <h5 class="card-title">${produtos[i].produto}</h5>
                         <p class="card-text m-0"><strong>Quantidade: ${produtos[i].quantidade}</strong></p>
