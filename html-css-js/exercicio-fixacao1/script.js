@@ -104,7 +104,7 @@ function limpar() {
 
 function excluirNumero(){
 
-     numero = document.getElementById('inputNumber').value
+    numero = document.getElementById('inputNumber').value
         
     for (let i = 0; i < numeros.length; i++) {
         if (numero == numeros[i]) {

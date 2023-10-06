@@ -1,0 +1,30 @@
+.livre{
+    background-color: rgb(1, 183, 1);
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    margin: 1%;
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+.livre:hover{
+    background-color: rgba(1, 183, 1, 0.5);
+}
+
+.ocupado{
+    background-color: rgb(183, 1, 1);
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    margin: 1%;
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+#sala{
+    max-width: 800px;
+    min-height: 500px;
+    border: solid 1px black;
+    border-radius: 5px;
+}
