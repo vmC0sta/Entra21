@@ -2,8 +2,18 @@ package atividades;
 
 public class Retangulo {
 
-    double comprimento;
-    double largura;
+    private double comprimento;
+    private double largura;
+
+    public void setMedidas(double comprimento, double largura){
+        this.comprimento = comprimento;
+        this.largura = largura;
+    }
+
+    public void getMedidas(){
+        System.out.println(largura);
+        System.out.println(comprimento);;
+    }
 
     public void area(){
         double resultado = comprimento * largura;
@@ -12,7 +22,7 @@ public class Retangulo {
     }
 
     public void perimetro(){
-        double resultado = (comprimento + comprimento) + (largura+largura);
+        double resultado = (comprimento * 2) + (largura * 2);
         System.out.println("Perímetro: " + resultado);
         System.out.println();
     }
