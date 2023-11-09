@@ -39,7 +39,7 @@ public class ManageFile {
             for (Product product : productsList) {
                 writer.write(String.valueOf(product) + "\n");
                 totalQuantity += product.getQuantity();
-                totalValue = +product.getValue();
+                totalValue += product.getValue();
             }
             writer.write("\nTotal products: " + productsList.size() + "\t Total quantity: " + totalQuantity + "\tTotal value: " + totalValue * totalQuantity);
             writer.close();
@@ -47,19 +47,6 @@ public class ManageFile {
             e.printStackTrace();
         }
 
-    }
-
-    public void readFile(ArrayList<Product> listProduct) {
-        try {
-            File file = new File("file");
-            Scanner reader = new Scanner(file);
-            while (reader.hasNextLine()) {
-                String linha = reader.nextLine();
-                linha.indexOf("\t");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }

@@ -1,6 +1,8 @@
 import product.ManageProduct;
 import product.Product;
 import manageFile.ManageFile;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,11 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        ArrayList<Product> listProduct = new ArrayList<Product>();
         ManageFile manageFile = new ManageFile();
         manageFile.createFile("file");
         ManageProduct manageProduct = new ManageProduct();
         Product product = new Product();
-        ArrayList<Product> listProduct = new ArrayList<Product>();
+
 
         while (true) {
             System.out.println("===============================");
