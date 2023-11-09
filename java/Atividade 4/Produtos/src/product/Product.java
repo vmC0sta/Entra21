@@ -6,6 +6,17 @@ public class Product {
     private double quantity;
     private double value;
 
+    public Product(){
+        //
+    }
+
+    public Product(int id, String description, double quantity, double value){
+        this.id = id;
+        this.description = description;
+        this.quantity = quantity;
+        this.value = value;
+    }
+
     public int getId() {
         return id;
     }

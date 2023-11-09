@@ -1,22 +1,15 @@
-import product.ManageProduct;
 import product.Product;
-import manageFile.ManageFile;
+import util.ManageDB;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
-        ArrayList<Product> listProduct = new ArrayList<Product>();
-        ManageFile manageFile = new ManageFile();
-        manageFile.createFile("file");
-        ManageProduct manageProduct = new ManageProduct();
-        Product product = new Product();
-
+        ManageDB manageDB = new ManageDB();
+        ArrayList<Product> listProducts = manageDB.fetchData();
 
         while (true) {
             System.out.println("===============================");
@@ -29,16 +22,17 @@ public class Main {
             System.out.println("===============================");
             int opcao = new Scanner(System.in).nextInt();
 
+            listProducts = manageDB.fetchData();
 
             switch (opcao) {
                 case 1:
                     System.out.println("Digite a descrição do produto: ");
                     String description = new Scanner(System.in).nextLine();
-                    System.out.println("Digite o valor unitário do produto");
-                    double value = new Scanner(System.in).nextDouble();
                     System.out.println("Digite a quantidade do produto");
                     double quantity = new Scanner(System.in).nextDouble();
-                    manageProduct.createProduct(description, value, quantity);
+                    System.out.println("Digite o valor unitário do produto");
+                    double value = new Scanner(System.in).nextDouble();
+                    manageDB.insert(description,quantity,value);
                     break;
                 case 2:
                     System.out.println("Digite o código do produto a ser alterado: ");
@@ -49,20 +43,21 @@ public class Main {
                     value = new Scanner(System.in).nextDouble();
                     System.out.println("Digite a quantidade do produto");
                     quantity = new Scanner(System.in).nextDouble();
-                    manageProduct.updateProduct(id, description, value, quantity);
+                    manageDB.update(id, description, value, quantity);
                     break;
                 case 3:
                     System.out.println("Digite o código do produto a ser excluído: ");
                     id = new Scanner(System.in).nextInt();
-                    manageProduct.deleteProduct(id);
+                    manageDB.delete(id);
                     break;
                 case 4:
                     System.out.println("Digite o código do produto: ");
                     id = new Scanner(System.in).nextInt();
-                    manageProduct.display(id);
+                    manageDB.query(listProducts,id);
                     break;
                 case 5:
-                    manageProduct.displayAll();
+                    listProducts = manageDB.fetchData();
+                    manageDB.queryAll(listProducts);
                     break;
                 case 6:
                     System.out.println("Encerrando o programa.");
