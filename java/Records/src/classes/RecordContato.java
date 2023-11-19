@@ -1,5 +1,2 @@
-package classes;
-
-public record RecordContato(String nome, String email) {
-
+package classes;public record RecordContato() {
 }

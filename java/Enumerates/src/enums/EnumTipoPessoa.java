@@ -1,6 +1,4 @@
 package enums;
 
-public enum EnumTipoPessoa {
-    FISICA,
-    JURIDICA
+public enum TipoPessoa {
 }
