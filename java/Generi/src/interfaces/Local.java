@@ -1,2 +1,5 @@
-package interfaces;public class Local {
+package interfaces;
+
+public class Local {
+
 }

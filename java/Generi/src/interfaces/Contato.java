@@ -1,2 +1,4 @@
-package interfaces;public class Contato {
+package interfaces;
+
+public class Contato {
 }

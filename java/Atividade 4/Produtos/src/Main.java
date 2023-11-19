@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         ManageDB manageDB = new ManageDB();
-        ArrayList<Product> listProducts = manageDB.fetchData();
+        ArrayList<Product> listProducts = new ArrayList<>();
 
         while (true) {
             System.out.println("===============================");
