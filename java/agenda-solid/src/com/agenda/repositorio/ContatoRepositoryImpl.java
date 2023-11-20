@@ -34,8 +34,11 @@ public class ContatoRepositoryImpl implements Repository<Contato> {
 
     @Override
     public List<Contato> findAll() {
-        try (Connection connection = dbConnection.getConnection(); PreparedStatement statement = connection.prepareStatement("SELECT * FROM ag_contato");
-             ResultSet resultSet = statement.executeQuery()) {
+        try (
+                Connection connection = dbConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM ag_contato");
+                ResultSet resultSet = statement.executeQuery()
+        ) {
             List<Contato> contatos = new ArrayList<>();
             while (resultSet.next()) {
                 Contato contato = new Contato();
