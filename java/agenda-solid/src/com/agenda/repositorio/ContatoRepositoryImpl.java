@@ -3,10 +3,7 @@ package com.agenda.repositorio;
 import com.agenda.dominio.Contato;
 import com.agenda.persistencia.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,16 +17,21 @@ public class ContatoRepositoryImpl implements Repository<Contato> {
     @Override
     public Contato save(Contato contato) {
         try (Connection connection = dbConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ag_contato (nome,email,telefone) VALUES (?,?,?)")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ag_contato (nome,email,telefone) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, contato.getNome());
             preparedStatement.setString(2, contato.getEmail());
             preparedStatement.setString(3, contato.getTelefone());
             preparedStatement.executeUpdate();
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                contato.setId(generatedKeys.getLong(1));
+            } else {
+                throw new SQLException("Falha ao obter o ID gerado para o Contato.");
+            }
+            return contato;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao salvar contato", e);
         }
-        ;
-        return contato;
     }
 
     @Override
@@ -61,15 +63,14 @@ public class ContatoRepositoryImpl implements Repository<Contato> {
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM ag_contato WHERE id = ?")
         ) {
             statement.setLong(1, id);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    Contato contato = new Contato();
-                    contato.setId(resultSet.getLong("id"));
-                    contato.setNome(resultSet.getString("nome"));
-                    contato.setEmail(resultSet.getString("email"));
-                    contato.setTelefone(resultSet.getString("telefone"));
-                    return contato;
-                }
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Contato contato = new Contato();
+                contato.setId(resultSet.getLong("id"));
+                contato.setNome(resultSet.getString("nome"));
+                contato.setEmail(resultSet.getString("email"));
+                contato.setTelefone(resultSet.getString("telefone"));
+                return contato;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

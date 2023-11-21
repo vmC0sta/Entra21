@@ -10,4 +10,5 @@ public interface Repository<T> {
     List<T> findAll() throws SQLException;
     T findyById(Long id);
     void deleteById(Long id);
+
 }

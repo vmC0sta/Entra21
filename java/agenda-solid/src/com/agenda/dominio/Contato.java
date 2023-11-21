@@ -15,8 +15,8 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public int getId() {
-        return Math.toIntExact(id);
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
