@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CompromissoRepositoyImpl implements RepositoryNN<Compromisso>  {
+public class CompromissoRepositoyImpl implements RepositoryNN<Compromisso> {
     private DBConnection dbConnection;
 
     public CompromissoRepositoyImpl(DBConnection dbConnection) {
@@ -88,66 +88,89 @@ public class CompromissoRepositoyImpl implements RepositoryNN<Compromisso>  {
             throw new RuntimeException("Erro ao buscar compromissos", e);
         }
     }
+
     @Override
-    public Compromisso findyById(Long id) {
+    public Compromisso findyById(Long id) throws SQLException {
         try (
                 Connection connection = dbConnection.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ag_compromisso A INNER JOIN ag_local B ON A.local = B.id WHERE A.id = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "SELECT " +
+                                "   A.id AS compromisso_id, " +
+                                "   A.descricao AS compromisso_descricao, " +
+                                "   B.id AS local_id, " +
+                                "   B.descricao AS local_descricao, " +
+                                "   C.id AS contato_id, " +
+                                "   C.nome AS contato_nome " +
+                                "FROM ag_compromisso A " +
+                                "INNER JOIN ag_local B ON A.local = B.id " +
+                                "INNER JOIN ag_compromissocontato D ON A.id = D.compromisso " +
+                                "INNER JOIN ag_contato C ON D.contato = C.id " +
+                                "WHERE A.id = ?"
+                );
         ) {
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
+
+            Compromisso compromisso = null;
             while (resultSet.next()) {
-                Compromisso compromisso = new Compromisso();
-                compromisso.setId(resultSet.getLong("id"));
-                compromisso.setDescricao(resultSet.getString("descricao"));
-                Local local = new Local();
-                local.setId(resultSet.getLong("local"));
-                compromisso.setLocal(local);
-                return compromisso;
+                if (compromisso == null) {
+                    compromisso = new Compromisso();
+                    compromisso.setId(resultSet.getLong("compromisso_id"));
+                    compromisso.setDescricao(resultSet.getString("compromisso_descricao"));
+
+                    Local local = new Local();
+                    local.setId(resultSet.getLong("local_id"));
+                    local.setDescricao(resultSet.getString("local_descricao"));
+                    compromisso.setLocal(local);
+                }
+
+                Contato contato = new Contato();
+                contato.setId(resultSet.getLong("contato_id"));
+                contato.setNome(resultSet.getString("contato_nome"));
+                compromisso.getContatos().add(contato);
             }
+            return compromisso;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
     @Override
     public void deleteById(Long id) {
-        try(
+        try (
                 Connection connection = dbConnection.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM ag_compromisso WHERE id = ?")
-                ){
-            preparedStatement.setLong(1,id);
+        ) {
+            preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
     @Override
-    public void associate(Long idCompromisso,Long idContato) {
-        try(
+    public void associate(Long idCompromisso, Long idContato) {
+        try (
                 Connection connection = dbConnection.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ag_compromissocontato (compromisso,contato) VALUES (?,?)")
-                ){
-                preparedStatement.setLong(1,idCompromisso);
-                preparedStatement.setLong(2,idContato);
-                preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        ) {
+            preparedStatement.setLong(1, idCompromisso);
+            preparedStatement.setLong(2, idContato);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public void deleteAssociate(Long idCompromisso, Long idContato) {
-        try(
+        try (
                 Connection connection = dbConnection.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM ag_compromissocontato WHERE compromisso = ? AND contato = ?");
-        ){
-            preparedStatement.setLong(1,idCompromisso);
-            preparedStatement.setLong(2,idContato);
+        ) {
+            preparedStatement.setLong(1, idCompromisso);
+            preparedStatement.setLong(2, idContato);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 

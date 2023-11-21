@@ -8,7 +8,7 @@ import java.util.List;
 public interface Repository<T> {
     T save(T t);
     List<T> findAll() throws SQLException;
-    T findyById(Long id);
+    T findyById(Long id) throws SQLException;
     void deleteById(Long id);
 
 }

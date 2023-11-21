@@ -13,6 +13,7 @@
     import java.sql.SQLException;
     import java.util.ArrayList;
     import java.util.List;
+    import java.util.Scanner;
 
     public class Main {
         public static void main(String[] args) throws SQLException {
@@ -26,30 +27,72 @@
             CompromissoService compromissoService = new CompromissoService(compromissoRepository);
             List<Compromisso> compromissos = new ArrayList<>();
 
-//            Local local1 = new Local("Escola");
-//            localService.salvar(local1);
-//
-//            Compromisso compromisso1 = new Compromisso("Estudar", local1);
-//            compromissoService.salvar(compromisso1);
-//            Contato contato1 = new Contato("contato1", "duda.cv2404@gmail.com", "44444444");
-//            contatoService.salvar(contato1);
-//            Contato contato2 = new Contato("contato2", "contato2@gmail.com", "333333333333");
-//            contatoService.salvar(contato2);
-//
-//            Local local2 = new Local("Trabalho");
-//            localService.salvar(local2);
-//            Compromisso compromisso2 = new Compromisso("Estudar", local2);
-//            compromissoService.salvar(compromisso2);
-//            Contato contato3 = new Contato("contato3", "contato3@gmail.com", "555555555");
-//            contatoService.salvar(contato3);
-//            compromissoService.associate(compromisso1.getId(), contato1.getId());
-//            compromissoService.associate(compromisso1.getId(), contato2.getId());
-//            compromissoService.associate(compromisso2.getId(), contato3.getId());
+            while (true) {
+                System.out.println("=============================== ");
+                System.out.println("1 - INSERIR COMPROMISSO         ");
+                System.out.println("2 - EXCLUIR COMPROMISSO         ");
+                System.out.println("3 - EXIBIR UM COMPROMISSO       ");
+                System.out.println("4 - EXIBIR TODOS OS COMPROMISSOS");
+                System.out.println("5 - SAIR                        ");
+                System.out.println("=============================== ");
+                int opcao = new Scanner(System.in).nextInt();
+                switch (opcao) {
+                    case 1:
+                        Compromisso compromisso = new Compromisso();
+                        Local local = new Local();
 
-            compromissoService.excluirAssociate(21L,27L);
-            compromissos = compromissoService.listarTodos();
-            for (Compromisso compromisso : compromissos) {
-                System.out.println(compromisso.toString());
+                        System.out.println("Digite a descrição do compromisso:");
+                        String descricao_compromisso = new Scanner(System.in).nextLine();
+                        compromisso.setDescricao(descricao_compromisso);
+                        System.out.println("Digite o local do compromisso:");
+                        String descricao_local = new Scanner(System.in).nextLine();
+                        local.setDescricao(descricao_local);
+                        localService.salvar(local);
+                        compromisso.setLocal(local);
+                        compromissoService.salvar(compromisso);
+                        System.out.println("Digite quantos contatos participarão desse compromisso:");
+                        int quantidade_contatos = new Scanner(System.in).nextInt();
+                        for (int i=0;i<quantidade_contatos;i++){
+                            Contato contato = new Contato();
+                            System.out.println("Digite o nome do " + (i + 1) + "° contato:");
+                            String nome_contato = new Scanner(System.in).nextLine();
+                            contato.setNome(nome_contato);
+                            System.out.println("Digite o e-mail do " + (i + 1) + "° contato:");
+                            String email_contato = new Scanner(System.in).nextLine();
+                            contato.setEmail(email_contato);
+                            System.out.println("Digite o telefone do " + (i + 1) + "° contato:");
+                            String telefone_contato = new Scanner(System.in).nextLine();
+                            contato.setTelefone(telefone_contato);
+                            contatoService.salvar(contato);
+                            compromissoService.associarEntidades(compromisso.getId(),contato.getId());
+                        }
+                        System.out.println("Compromisso cadastrado");
+                        break;
+                    case 2:
+                        System.out.println("Digite o ID do compromisso: ");
+                        Long id_compromisso = new Scanner(System.in).nextLong();
+                        compromissoService.excluir(id_compromisso);
+                        break;
+                    case 3:
+                        System.out.println("Digite o ID do compromisso: ");
+                        id_compromisso = new Scanner(System.in).nextLong();
+                        Compromisso compromissoSelecionado = compromissoService.listarPorId(id_compromisso);
+                        System.out.println(compromissoSelecionado.toString());
+                        break;
+                    case 4:
+                        compromissos = compromissoService.listarTodos();
+                        for(Compromisso i : compromissos){
+                            System.out.println(i.toString());
+                        }
+                        break;
+                    case 5:
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                        break;
+                }
+
             }
 
         }

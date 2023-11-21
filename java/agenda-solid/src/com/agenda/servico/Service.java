@@ -8,7 +8,7 @@ import java.util.List;
 public interface Service <T>{
 
     List<T> listarTodos() throws SQLException;
-    T listarPorId(Long id);
+    T listarPorId(Long id) throws SQLException;
     T salvar(T t);
     void excluir(Long id);
 

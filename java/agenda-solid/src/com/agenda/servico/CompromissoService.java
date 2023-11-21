@@ -17,7 +17,7 @@ public class CompromissoService implements ServiceNN<Compromisso>{
     }
 
     @Override
-    public Compromisso listarPorId(Long id) {
+    public Compromisso listarPorId(Long id) throws SQLException {
         return  compromissoRepositoy.findyById(id);
     }
 
