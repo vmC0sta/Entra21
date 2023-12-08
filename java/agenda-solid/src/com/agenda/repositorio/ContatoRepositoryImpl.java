@@ -15,7 +15,7 @@ public class ContatoRepositoryImpl implements Repository<Contato> {
     }
 
     @Override
-    public Contato save(Contato contato) {
+    publ    ic Contato save(Contato contato) {
         try (Connection connection = dbConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ag_contato (nome,email,telefone) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, contato.getNome());
