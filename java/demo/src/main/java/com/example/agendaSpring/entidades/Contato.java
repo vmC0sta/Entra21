@@ -1,20 +1,25 @@
-package com.example.demo.entidades;
+package com.example.agendaSpring.entidades;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_contato")
 public class Contato {
+
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 50)
     private String nome;
     @Column(length = 100)
     private String email;
-    @Column(length = 14)
+    @Column(length = 15)
     private String fone;
 
+    @ManyToMany(mappedBy = "contatos")
+    private List<Compromisso> compromissos;
     public Contato() {
     }
     public Contato(Long id, String nome, String email, String fone) {

@@ -1,4 +1,4 @@
-package com.example.demo.entidades;
+package com.example.agendaSpring.entidades;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "tb_local")
 public class Local {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 100)
